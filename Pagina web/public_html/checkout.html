@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Checkout | Relojes Xander</title>
+
+        <style>
+            /* ===== FONDO GENERAL ===== */
+            body {
+                margin: 0;
+                font-family: Arial, sans-serif;
+                background: linear-gradient(135deg, #dfe9f3, #ffffff);
+                min-height: 100vh;
+            }
+
+            /* ===== HEADER ===== */
+            header {
+                text-align: center;
+                padding: 25px 10px;
+                background: #2a2f4f;
+                color: white;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            }
+
+            header h1 {
+                margin: 0;
+                font-size: 28px;
+                letter-spacing: 1px;
+            }
+
+            /* ===== CONTENEDOR PRINCIPAL ===== */
+            #checkout-container {
+                max-width: 850px;
+                margin: 50px auto;
+                padding: 35px 40px;
+                background: #ffffff;
+                border-radius: 14px;
+                box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+                animation: fadeIn 0.5s ease;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(15px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            h2 {
+                color: #333;
+                margin-top: 0;
+                margin-bottom: 15px;
+                font-size: 22px;
+                border-left: 5px solid #5b80ff;
+                padding-left: 10px;
+            }
+
+            /* ===== RESUMEN DEL PEDIDO ===== */
+            #resumen-final {
+                border: 1px solid #ccc;
+                padding: 18px;
+                border-radius: 10px;
+                margin-bottom: 30px;
+                background: #fafafa;
+            }
+
+            #checkout-lista li {
+                padding: 6px;
+                font-size: 16px;
+                border-bottom: 1px solid #eee;
+            }
+
+            #checkout-total {
+                font-size: 18px;
+                font-weight: bold;
+                margin-top: 15px;
+                color: #2a2f4f;
+            }
+
+            /* ===== FORMULARIO ===== */
+            form label {
+                display: block;
+                margin-top: 15px;
+                font-weight: bold;
+                color: #444;
+            }
+
+            form input {
+                width: 100%;
+                padding: 12px 14px;
+                margin-top: 5px;
+                border-radius: 8px;
+                border: 1px solid #bbb;
+                font-size: 15px;
+                transition: border 0.2s, box-shadow 0.2s;
+            }
+
+            form input:focus {
+                outline: none;
+                border-color: #5b80ff;
+                box-shadow: 0 0 4px rgba(91,128,255,0.4);
+            }
+
+            /* ===== BOTÓN ===== */
+            #btn-finalizar {
+                margin-top: 25px;
+                width: 100%;
+                padding: 14px;
+                font-size: 16px;
+                background: #5b80ff;
+                color: white;
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: 0.25s;
+            }
+
+            #btn-finalizar:hover {
+                background: #4a6be0;
+            }
+
+            #btn-finalizar:active {
+                transform: scale(0.97);
+            }
+
+            /* Mensaje de simulación */
+            p {
+                color: #777;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <header>
+            <h1>🛒 Finalizar Compra</h1>
+        </header>
+
+        <main id="checkout-container">
+
+            <h2>Resumen de tu Pedido</h2>
+
+            <div id="resumen-final">
+                <ul id="checkout-lista">
+                    <li>Carrito vacío...</li>
+                </ul>
+                <p id="checkout-total">Total: S/. 0</p>
+            </div>
+
+            <h2>Datos de Envío y Pago</h2>
+
+            <form id="form-compra-simulada">
+                <label for="nombre-envio">Nombre:</label>
+                <input type="text" id="nombre-envio" required>
+
+                <label for="direccion-envio">Dirección:</label>
+                <input type="text" id="direccion-envio" required>
+
+                <p>*Simulación de pago segura*</p>
+
+                <button type="submit" id="btn-finalizar">
+                    Confirmar y Pagar (Simulación)
+                </button>
+            </form>
+
+        </main>
+        <script>
+            function enviarCompraWhatsApp(carrito) {
+                const numero = "519XXXXXXXX"; // ← cambia por tu número
+
+                let mensaje = "🛒 *Nueva Compra desde tu Tienda Web*\n\n";
+
+                carrito.forEach(item => {
+                    mensaje += `• ${item.nombre} x${item.cantidad} - S/${item.precio}\n`;
+                });
+
+                let total = carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
+                mensaje += `\n💵 *Total:* S/${total}`;
+
+                let url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+
+                window.open(url, "_blank");
+            }
+        </script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const checkoutLista = document.getElementById('checkout-lista');
+                const checkoutTotal = document.getElementById('checkout-total');
+                const form = document.getElementById('form-compra-simulada');
+
+                const carritoJSON = localStorage.getItem('carritoTemporal');
+                let carritoCompras = carritoJSON ? JSON.parse(carritoJSON) : [];
+
+                let total = 0;
+                checkoutLista.innerHTML = '';
+
+                if (carritoCompras.length > 0) {
+                    carritoCompras.forEach(item => {
+                        const subtotal = item.precio * item.cantidad;
+                        const li = document.createElement('li');
+                        li.innerText = `${item.nombre} x${item.cantidad} - S/.${subtotal.toFixed(2)}`;
+                        checkoutLista.appendChild(li);
+                        total += subtotal;
+                    });
+                } else {
+                    checkoutLista.innerHTML = '<li>No hay productos en tu pedido.</li>';
+                    form.style.display = 'none';
+                }
+
+                checkoutTotal.innerText = `TOTAL A PAGAR: S/. ${total.toFixed(2)}`;
+
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+
+                    // 1. Enviar a WhatsApp
+                    enviarCompraWhatsApp(carritoCompras);
+
+                    // 2. Limpiar carrito
+                    localStorage.removeItem('carritoTemporal');
+
+                    // 3. Opcional: mensaje
+                    alert("Tu pedido está listo para enviar por WhatsApp.");
+
+                    // 4. Redirigir al inicio
+                    window.location.href = 'index.html';
+                });
+
+            });
+        </script>
+
+    </body>
+</html>
