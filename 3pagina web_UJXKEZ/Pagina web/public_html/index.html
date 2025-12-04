@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <!-- Codificación y adaptación a dispositivos móviles -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Título y descripción -->
+        <title>Relojes Xander - Elegancia y Precisión</title>
+        <meta name="description" content="Relojes Xander — Tienda de relojes elegantes, precisos y modernos. Proyecto práctico de HTML y CSS para el curso de desarrollo web.">
+
+        <!-- Ícono del sitio (favicon) -->
+        <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2947/2947992.png" type="image/png">
+
+        <!-- Enlace al CSS externo -->
+        <link rel="stylesheet" href="estilos.css">
+
+        <!-- Metadatos para redes sociales (Open Graph) -->
+        <meta property="og:title" content="Relojes Xander - Elegancia y Precisión">
+        <meta property="og:description" content="Explora tipos de relojes, tabla comparativa y formulario de contacto. Proyecto práctico del curso.">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/2947/2947992.png"> <!-- imagen que aparece al compartir -->
+        <!-- Fuente externa de Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+        <!-- Íconos Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+        <!-- Autor  -->
+        <meta name="author" content="Anthony">
+
+        <!-- Palabras clave  -->
+        <meta name="keywords" content="relojes, elegancia, smartwatch, analógico, digital, HTML, CSS, proyecto web">
+    </head>
+
+    <body>
+    <body>
+
+        <script>
+            if (!localStorage.getItem("sesionIniciada")) {
+                window.location.href = "login.html";
+            }
+        </script>
+
+        <a href="#relojes" class="skip-link">Saltar a los relojes</a>
+        <header>
+            <h1><i class="fas fa-clock"></i> Tienda de Relojes Xander</h1>
+        </header>
+        <nav>
+            <a href="#relojes">Tipos de relojes</a>
+            <a href="#marcas-populares">Marcas populares</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#contacto">Contacto</a>
+
+            <button onclick="cerrarSesion()" style="margin-left: 20px;">Cerrar sesión</button>
+        </nav>
+
+
+
+        <main id="main" class="contenedor-principal">
+            <section id="por-que-elegir" class="seccion-mitad">
+                <div class="mitad-imagen">
+                    <img src="relojf.png" alt="Reloj elegante">
+                </div>
+                <div class="mitad-texto">
+                    <h2>¿Por qué elegir un buen reloj?</h2>
+                    <p>Los relojes no solo son instrumentos para medir el tiempo, sino también accesorios de moda que reflejan personalidad y estilo. Un buen reloj combina diseño, tecnología y precisión.</p>
+                </div>
+            </section>
+
+
+
+            <section id="relojes">
+                <section id="relojes">
+                    <h2><i class="fa-regular fa-gem"></i> Tipos de Relojes</h2>
+
+                    <div class="filtros">
+                        <input type="text" id="busqueda" placeholder="Buscar por nombre o marca..." aria-label="Buscar por nombre o marca">
+
+                        <select id="filtro-marca" aria-label="Filtrar por marca">
+                            <option value="">Todas las marcas</option>
+                            <option value="Casio">Casio</option>
+                            <option value="Samsung">Samsung</option>
+                            <option value="Nike">Nike</option>
+                            <option value="Festina">Festina</option>
+                            <option value="Hannah Martin">Hannah Martin</option>
+                            <option value="Apple">Apple</option>
+                        </select>
+
+                        <input type="number" id="precio-min" placeholder="Precio min" aria-label="Precio mínimo">
+                        <input type="number" id="precio-max" placeholder="Precio max" aria-label="Precio máximo">
+
+                        <button id="btn-buscar"><i class="fas fa-search"></i> Buscar</button>
+                        <button id="btn-prompt">Búsqueda Rápida</button>
+                    </div>
+
+                    <div id="no-encontrado" style="display: none; text-align: center; margin-top: 30px; font-size: 1.2rem; color: #E76F51; font-weight: bold;">
+                        <i class="fas fa-exclamation-triangle"></i> No se encontraron relojes que coincidan con tu búsqueda.
+                    </div>
+
+
+                    <!-- Lista Tipos Relojes -->
+                    <ul class="lista-tipos">
+                        <li><i class="fa-regular fa-clock"></i> Reloj Analógico</li>
+                        <li><i class="fa-regular fa-clock"></i> Reloj Digital</li>
+                        <li><i class="fa-regular fa-clock"></i> Smartwatch</li>
+                        <li><i class="fa-regular fa-clock"></i> Reloj Deportivo</li>
+                        <li><i class="fa-regular fa-clock"></i> Reloj Clásico</li>
+                        <li><i class="fa-regular fa-clock"></i> Reloj Moderno</li>
+                    </ul>
+                    <!-- Marcas -->
+                    <section id="marcas-populares">
+                        <h2>Marcas populares</h2>
+                        <div class="marcas-grid">
+                            <div class="marca-item">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvq1vPavjJmysx986dY_ZUTEQYrDJZqYm93Q&s" alt="Logo Rolex">
+                                <span>Rolex</span>
+                            </div>
+                            <div class="marca-item">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWFeQw_aGZV_Dgu8QXCKz8OhdbmiX1Ws9RlQ&s" alt="Logo Omega">
+                                <span>Omega</span>
+                            </div>
+                            <div class="marca-item">
+                                <img src="https://1000logos.net/wp-content/uploads/2018/11/TAG-Heuer-logo.jpg" alt="Logo Tag Heuer">
+                                <span>Tag Heuer</span>
+                            </div>
+                            <div class="marca-item">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Casio_logo.svg/2560px-Casio_logo.svg.png" alt="Logo Casio">
+                                <span>Casio</span>
+                            </div>
+                            <div class="marca-item">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Seiko_logo.svg/1024px-Seiko_logo.svg.png" alt="Logo Seiko">
+                                <span>Seiko</span>
+                            </div>
+                            <div class="marca-item">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Apple_Watch_official_logo.svg/2560px-Apple_Watch_official_logo.svg.png" alt="Logo Apple Watch">
+                                <span>Apple Watch</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Contenedor del slider -->
+                    <div class="slider-container">
+                        <button class="slider-btn prev">&#10094;</button>
+
+                        <div class="galeria-relojes">
+                            <div style="min-width: 10px;"></div>
+
+                            <div class="reloj-item">
+                                <img src="https://unestiloperu.com/wp-content/uploads/reloj-qq-gw87j010y-deportivo-10-bar-acuatico-schok-1.jpg" alt="Reloj analógico" />
+                                <div class="info-reloj">
+                                    <span class="nombre">Reloj analógico</span>
+                                    <span class="modelo">GW-87J010Y</span>
+                                    <span class="marca">Casio</span>
+                                    <span class="precio">S/. 120</span>
+                                    <button class="agregar-carrito">Agregar al carrito</button>
+                                </div>
+                            </div>
+
+                            <div class="reloj-item">
+                                <img src="https://media.falabella.com/falabellaPE/129157118_01/w=800,h=800,fit=pad" alt="Smartwatch" />
+                                <div class="info-reloj">
+                                    <span class="nombre">Smartwatch</span>
+                                    <span class="modelo">SW-2025</span>
+                                    <span class="marca">Samsung</span>
+                                    <span class="precio">S/. 450</span>
+                                    <button class="agregar-carrito">Agregar al carrito</button>
+                                </div>
+                            </div>
+
+                            <div class="reloj-item">
+                                <img src="https://m.media-amazon.com/images/I/619xstmMPCL._AC_SL1100_.jpg" alt="Reloj deportivo" />
+                                <div class="info-reloj">
+                                    <span class="nombre">Reloj deportivo</span>
+                                    <span class="modelo">D-300</span>
+                                    <span class="marca">Nike</span>
+                                    <span class="precio">S/. 200</span>
+                                    <button class="agregar-carrito">Agregar al carrito</button>
+                                </div>
+                            </div>
+
+                            <div class="reloj-item">
+                                <img src="https://festina.com.pe/cdn/shop/products/8430622761324.jpg?v=1642026630" alt="Reloj clásico" />
+                                <div class="info-reloj">
+                                    <span class="nombre">Reloj clásico</span>
+                                    <span class="modelo">F-1967</span>
+                                    <span class="marca">Festina</span>
+                                    <span class="precio">S/. 350</span>
+                                    <button class="agregar-carrito">Agregar al carrito</button>
+                                </div>
+                            </div>
+
+                            <div class="reloj-item">
+                                <img src="https://clock.pe/cdn/shop/products/RELOJ_ORIGINAL_HANNAH_MARTIN_-_ELEGANTE_Y_CASUAL_-_MATE_NEGRO_HAN-27.jpg?v=1751044279" alt="Reloj moderno" />
+                                <div class="info-reloj">
+                                    <span class="nombre">Reloj moderno</span>
+                                    <span class="modelo">HM-27</span>
+                                    <span class="marca">Hannah Martin</span>
+                                    <span class="precio">S/. 280</span>
+                                    <button class="agregar-carrito">Agregar al carrito</button>
+
+                                </div>
+                            </div>
+
+                            <div class="reloj-item">
+                                <img src="https://m.media-amazon.com/images/I/71HqlGY1rgL.jpg" alt="Smartwatch 2" />
+                                <div class="info-reloj">
+                                    <span class="nombre">Smartwatch 2</span>
+                                    <span class="modelo">SW-2X</span>
+                                    <span class="marca">Apple</span>
+                                    <span class="precio">S/. 1200</span>
+                                    <button class="agregar-carrito">Agregar al carrito</button>
+                                </div>
+                            </div>
+
+                            <div class="reloj-item">
+                                <img src="https://rimage.ripley.com.pe/home.ripley/Attachment/MKP/3576/PMP20000333055/imagen2-1.jpeg" alt="Reloj Clásico">
+                                <div class="info-reloj">
+                                    <p class="nombre">Reloj Moderno</p>
+                                    <p class="modelo">G-Shock GA-2100-1A1</p>
+                                    <p class="marca">Casio</p>
+                                    <p class="precio">S/. 629</p>
+                                    <button class="agregar-carrito">Agregar al carrito</button>
+                                </div>
+                            </div>
+
+                            <div class="reloj-item">
+                                <img src="https://www.micasio.pe/wp-content/uploads/2025/07/Reloj-EDIFICE-EFV-140D-3A-Acero-Hombre-Plateado.png" alt="Reloj EFVC120D3ADF">
+                                <div class="info-reloj">
+                                    <p class="nombre">Reloj Clásico</p>
+                                    <p class="modelo">EFVC120D3ADF</p>
+                                    <p class="marca">Casio</p>
+                                    <p class="precio">S/. 799</p>
+                                    <button class="agregar-carrito">Agregar al carrito</button>
+                                </div>
+                            </div>
+
+                            <div class="reloj-item">
+                                <img src="https://i5.walmartimages.com/asr/5e6343d5-5f89-4185-8138-0746c97ca70d.eba6cbd1b6bc13e59903c6bbdba6b26e.jpeg" alt="Reloj Digital">
+                                <div class="info-reloj">
+                                    <p class="nombre">Reloj Digital</p>
+                                    <p class="modelo">Gao Jiahui</p>
+                                    <p class="marca">Nike</p>
+                                    <p class="precio">S/. 850</p>
+                                    <button class="agregar-carrito">Agregar al carrito</button>
+                                </div>
+                            </div>
+
+                            <div class="reloj-item">
+                                <img src="https://media.ldlc.com/r1600/ld/products/00/06/16/78/LD0006167893.jpg" alt="Apple Watch SE 2024 (GPS)">
+                                <div class="info-reloj">
+                                    <p class="nombre">Smartwatch</p>
+                                    <p class="modelo">SE 2024 (GPS)</p>
+                                    <p class="marca">Apple</p>
+                                    <p class="precio">S/. 1399</p>
+                                    <button class="agregar-carrito">Agregar al carrito</button>
+                                </div>
+                            </div>
+
+                            <div class="reloj-item">
+                                <img src="https://most.pe/cdn/shop/files/reloj_hannah_martin_hombre_han-1.jpg?v=1763162253&width=1200" alt="Reloj Analógico HAN-26">
+                                <div class="info-reloj">
+                                    <p class="nombre">Analógico</p>
+                                    <p class="modelo">HAN-26</p>
+                                    <p class="marca">Hannah Martin</p>
+                                    <p class="precio">S/. 119</p>
+                                    <button class="agregar-carrito">Agregar al carrito</button>
+                                </div>
+                            </div>
+
+                            <div class="reloj-item">
+                                <img src="https://festina.com.pe/cdn/shop/products/8430622777042_cb0a0c79-153a-42dd-93b6-573082993927.jpg?v=1696440296" alt="Festina CHRONO SPORT F20562/4">
+                                <div class="info-reloj">
+                                    <p class="nombre">Analógico</p>
+                                    <p class="modelo">CHRONO SPORT F20562/4 - MULTICOLOR</p>
+                                    <p class="marca">Festina</p>
+                                    <p class="precio">S/. 500</p>
+                                    <button class="agregar-carrito">Agregar al carrito</button>
+                                </div>
+                            </div>
+
+
+                            <button class="slider-btn next">&#10095;</button>
+                        </div>
+                </section>
+
+                <!-- Video -->
+                <section id="video">
+                    <div class="video-container">
+                        <video 
+                            src="videosreloj.mp4" 
+                            autoplay 
+                            loop 
+                            controls
+                            playsinline
+                            style="width:100%; height:auto; object-fit:cover;">
+                            Tu navegador no soporta HTML5 video.
+                        </video>
+
+                        <div class="video-texto">
+                            <p>Tiempo, calma y elegancia en cada instante.</p>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- Tabla (Servicios postventa) -->
+                <section id="servicios">
+                    <h2><i class="fa-regular fa-clock"></i> Servicios Postventa</h2>
+                    <p>
+                        En Relojes Xander ofrecemos mantenimiento y soporte especializado para que tu reloj conserve su precisión y apariencia por mucho tiempo.
+                    </p>
+
+                    <div class="tabla-wrapper">
+                        <table class="tabla-servicios">
+                            <thead>
+                                <tr>
+                                    <th><i class="fa-solid fa-screwdriver-wrench"></i> Servicio</th>
+                                    <th><i class="fa-solid fa-file-lines"></i> Descripción</th>
+                                    <th><i class="fa-solid fa-hourglass-half"></i> Duración</th>
+                                    <th><i class="fa-solid fa-money-bill-wave"></i> Costo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Cambio de pila</td>
+                                    <td>Sustitución de batería original</td>
+                                    <td>15 minutos</td>
+                                    <td>S/.10</td>
+                                </tr>
+                                <tr>
+                                    <td>Limpieza general</td>
+                                    <td>Pulido y limpieza de correa y esfera</td>
+                                    <td>30 minutos</td>
+                                    <td>S/.20</td>
+                                </tr>
+                                <tr>
+                                    <td>Ajuste de correa</td>
+                                    <td>Adaptación al tamaño de la muñeca</td>
+                                    <td>10 minutos</td>
+                                    <td>S/.5</td>
+                                </tr>
+                                <tr>
+                                    <td>Revisión de movimiento</td>
+                                    <td>Chequeo y ajuste del mecanismo interno del reloj</td>
+                                    <td>45 minutos</td>
+                                    <td>S/.30</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p class="nota-servicios">
+                        Nuestros servicios postventa aseguran que cada reloj se mantenga en óptimas condiciones. 
+                        <br>
+                        ¿Necesitas ayuda o una cita? Comunícate con nosotros por 
+                        <a href="https://wa.me/918164193" target="_blank" rel="noopener noreferrer" class="whatsapp-link">
+                            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                        </a>.
+                    </p>
+                </section>
+
+
+
+                <! ---- Cuadros de Servicio ---- >
+                <section id="cuadros-servicios">
+                    <h2><i class="fa-regular fa-clock"></i> Servicios Detallados</h2>
+                    <div class="grid-servicios">
+                        <div class="cuadro-servicio" style="background-image: url('https://media.gq.com.mx/photos/65566d0fd095bbee0d4cdc23/master/w_1600%2Cc_limit/Changer-pile-montre-3.jpg');">
+                            <h3>Cambio de pila</h3>
+                            <p>Sustitución rápida de la batería para que tu reloj siga funcionando perfectamente.</p>
+                            <a href="#" class="btn-ver-mas">Ver más</a>
+                        </div>
+                        <div class="cuadro-servicio" style="background-image: url('https://elektonwatches.com/wp-content/uploads/como-limpiar-un-reloj.jpg');">
+                            <h3>Limpieza general</h3>
+                            <p>Pulido y limpieza completa de correa y esfera, dejando tu reloj como nuevo.</p>
+                            <a href="#" class="btn-ver-mas">Ver más</a>
+                        </div>
+                        <div class="cuadro-servicio" style="background-image: url('https://www.iguanasell.es/cdn/shop/articles/portada-blog_1200x.jpg?v=1628854708');">
+                            <h3>Ajuste de correa</h3>
+                            <p>Adaptamos la correa a tu medida para un ajuste cómodo y seguro.</p>
+                            <a href="#" class="btn-ver-mas">Ver más</a>
+                        </div>
+                        <div class="cuadro-servicio" style="background-image: url('https://img.freepik.com/foto-gratis/cerrar-reloj-cambio-hora_23-2149241149.jpg?semt=ais_hybrid&w=740&q=80');">
+                            <h3>Revisión de movimiento</h3>
+                            <p>Chequeo y ajuste del mecanismo interno del reloj para mantener su precisión.</p>
+                            <a href="#" class="btn-ver-mas">Ver más</a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Modal flotante -->
+                <div id="modal-servicio" class="modal">
+                    <div class="modal-contenido">
+                        <span class="cerrar">&times;</span>
+                        <h3 id="modal-titulo">Título del servicio</h3>
+                        <img id="modal-imagen" src="" alt="Imagen del servicio" />
+                        <p id="modal-descripcion">Descripción detallada del servicio...</p>
+                        <p id="modal-detalle">Especificaciones, duración, costo, pasos a seguir, etc.</p>
+                    </div>
+                </div>
+
+                <!----Sección Contacto (Formulario) ---->
+                <section class="contacto" id="contacto" aria-labelledby="titulo-contacto">
+                    <h2><i class="fa-solid fa-envelope"></i> Contáctanos</h2>
+                    <form 
+                        action="https://formspree.io/f/xjkalarj" 
+                        method="POST"
+                        aria-describedby="aviso-contacto"
+                        >
+                        <p id="aviso-contacto" style="font-size: 0.9rem; color: #666;">
+                            Los campos marcados con * son obligatorios.
+                        </p>
+
+                        <label for="nombre">Nombre completo*:</label>
+                        <input 
+                            type="text" 
+                            id="nombre" 
+                            name="nombre" 
+                            required 
+                            placeholder="Tu nombre completo"
+                            minlength="3"
+                            aria-required="true"
+                            />
+
+                        <label for="email">Correo electrónico*:</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            required 
+                            placeholder="Tu correo electrónico"
+                            aria-required="true"
+                            />
+
+                        <label for="telefono">Teléfono (opcional):</label>
+                        <input 
+                            type="tel" 
+                            id="telefono" 
+                            name="telefono" 
+                            placeholder="Ejemplo: +51 987654321"
+                            pattern="^\+?\d{9,15}$"
+                            aria-describedby="telefono-ayuda"
+                            />
+                        <small id="telefono-ayuda" style="color:#555;">Incluye código de país si aplica.</small>
+
+                        <label for="mensaje">Mensaje*:</label>
+                        <textarea 
+                            id="mensaje" 
+                            name="mensaje" 
+                            rows="5" 
+                            required 
+                            placeholder="Escribe tu consulta o mensaje aquí"
+                            minlength="10"
+                            aria-required="true"
+                            ></textarea>
+
+                        <button 
+                            type="submit" 
+                            aria-label="Enviar mensaje del formulario de contacto"
+                            >
+                            Enviar
+                        </button>
+                    </form>
+                    <p class="nota-formulario">*Formulario listo para enviar mediante Formspree.</p>
+                </section>
+
+
+        </main>
+        <footer>
+            <div class="footer-container">
+                <p>© 2025 Tienda de Relojes Elegance. Todos los derechos reservados.</p>
+
+                <div class="social-links">
+                    <a href="https://www.facebook.com/tuusuario" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/tuusuario" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/918164193" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+        </footer>
+
+
+
+        <script src="scripts.js"></script>
+        <script src="js/servicios.js"></script>
+        <!-- Botón para volver al inicio -->
+        <a href="#main" class="btn-subir" aria-label="Volver al inicio">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+
+        <!-- Mini Carrito -->
+        <div id="mini-carrito">
+            <div id="carrito-header">
+                🛒 Carrito (<span id="carrito-cantidad">0</span>)
+            </div>
+            <div id="carrito-contenido">
+                <ul id="carrito-lista"></ul>
+                <div id="carrito-total">Total: S/. 0</div>
+
+                <button id="btn-realizar-compra" disabled>Realizar Compra</button>
+
+            </div>
+        </div>
+
+        <script>
+                        function cerrarSesion() {
+                            localStorage.removeItem("sesionIniciada");
+                            window.location.href = "login.html";
+                        }
+        </script>
+
+    </body>
+
+</html>
