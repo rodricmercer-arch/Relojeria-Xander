@@ -952,7 +952,35 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     border: 1px solid #2a9d8f;
     pointer-events: none;
 }
+/* DETALLES*/
+.ver-detalles {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #E76F51;
+    color: white;
+    transition: all 0.3s ease;
+}
 
+.ver-detalles:hover {
+    background-color: #F4A261;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.ver-detalles.agregado {
+    background-color: #2a9d8f;
+    color: white;
+    transform: scale(0.98);
+    border: 1px solid #2a9d8f;
+    pointer-events: none;
+}
 /* --- Estilo para el botón de Checkout --- */
 #btn-realizar-compra {
     display: block;

@@ -7,11 +7,11 @@ const scrollAmount = 270; // ancho aproximado + gap
 galeria.scrollLeft = 0;
 
 nextBtn.addEventListener('click', () => {
-    galeria.scrollBy({left: scrollAmount, behavior: 'smooth'});
+    galeria.scrollBy({ left: scrollAmount, behavior: 'smooth' });
 });
 
 prevBtn.addEventListener('click', () => {
-    galeria.scrollBy({left: -scrollAmount, behavior: 'smooth'});
+    galeria.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
 });
 
 // --- FUNCIÓN PARA ENVIAR COMPRA A WHATSAPP ---
@@ -91,6 +91,19 @@ document.addEventListener('DOMContentLoaded', () => {
 `
         }
     };
+    document.querySelectorAll('.reloj-item').forEach(item => {
+    // Botón Ver Detalles
+const btnDetalles = item.querySelector('.ver-detalles');
+if (btnDetalles) {
+    btnDetalles.addEventListener('click', (e) => {
+        e.stopPropagation(); // evita interferencias con otros listeners
+        const id = item.dataset.id; // tomamos el ID único del reloj
+        window.location.href = `producto.html?id=${id}`; // redirige solo con ID
+    });
+}
+
+});
+
     botonesVerMas.forEach(btn => {
         btn.addEventListener('click', e => {
             e.preventDefault();
@@ -183,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const carritoTotal = document.getElementById('carrito-total'); // div con total
     const carritoContenido = document.getElementById('carrito-contenido'); // contenedor desplegable
     const miniCarritoBtn = document.getElementById('mini-carrito'); // <-- Nueva variable para evitar el error
-   const btnRealizarCompra = document.getElementById('btn-realizar-compra');
+    const btnRealizarCompra = document.getElementById('btn-realizar-compra');
 
     // ----------------------------------------------------------------------
     // --- NUEVAS CONSTANTES PARA FILTROS ---
@@ -217,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (carritoItem) {
                 carritoItem.cantidad += 1;
             } else {
-                carritoCompras.push({nombre, precio, cantidad: 1});
+                carritoCompras.push({ nombre, precio, cantidad: 1 });
             }
 
             // AÑADIMOS EL CONSOLE.LOG DE DIAGNÓSTICO AQUÍ
@@ -241,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-// ----------------------------------------------------------------------
+    // ----------------------------------------------------------------------
     // --- NUEVA FUNCIÓN: Lógica de Filtrado (Tema 2) ---
     // ----------------------------------------------------------------------
     function filtrarRelojes() {
@@ -294,12 +307,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Lista de items
         carritoLista.innerHTML = '';
-        carritoCompras.forEach(item => {
+        carritoCompras.forEach((item, index)=> {
             const li = document.createElement('li');
             li.innerText = `${item.nombre} x${item.cantidad} - S/.${(item.precio * item.cantidad).toFixed(2)}`;
             carritoLista.appendChild(li);
-        });
+             // --- BOTÓN QUITAR ---
+    const btnQuitar = document.createElement('button');
+    btnQuitar.innerText = "Quitar";
+    btnQuitar.style.marginLeft = "10px";
+    btnQuitar.addEventListener('click', () => {
+        carritoCompras.splice(index, 1); // elimina este item
+        actualizarCarrito(); // refresca lista y total
+    });
 
+    li.appendChild(btnQuitar);
+    carritoLista.appendChild(li);
+});
+    
         // Total acumulado
         let total = carritoCompras.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
         if (carritoTotal) {
@@ -335,21 +359,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const sliderGaleria = document.querySelector('.galeria-relojes');
     const btnPrev = document.querySelector('.slider-btn.prev');
     const btnNext = document.querySelector('.slider-btn.next');
+const items = sliderGaleria.querySelectorAll('.reloj-item');
+const itemWidth = items[0].offsetWidth; // ancho real de un item
+const gap = 16; // si tienes un gap entre items en CSS
+const scrollAmount = itemWidth + gap;
+    if (sliderGaleria) {
+        if (btnNext) {
+            btnNext.addEventListener('click', () => {
+                sliderGaleria.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+        }
 
-    const scrollDistance = 250; // nombre único
-
-    if (btnNext && sliderGaleria) {
-        btnNext.addEventListener('click', () => {
-            sliderGaleria.scrollBy({left: scrollDistance, behavior: 'smooth'});
-        });
+        if (btnPrev) {
+            btnPrev.addEventListener('click', () => {
+                sliderGaleria.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+        }
     }
 
-    if (btnPrev && sliderGaleria) {
-        btnPrev.addEventListener('click', () => {
-            sliderGaleria.scrollBy({left: -scrollDistance, behavior: 'smooth'});
-        });
-    }
-// ----------------------------------------------------------------------
+    // ----------------------------------------------------------------------
     // --- NUEVOS LISTENERS PARA FILTRO Y BÚSQUEDA ---
     // ----------------------------------------------------------------------
 

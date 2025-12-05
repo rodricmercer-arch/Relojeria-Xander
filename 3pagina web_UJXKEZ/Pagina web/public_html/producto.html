@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle del reloj - Relojes Xander</title>
+  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="product-page.css">
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2947/2947992.png" type="image/png">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+  <a href="#producto" class="skip-link">Saltar al producto</a>
+
+  <!-- Header y navegación idénticos al index -->
+  <header>
+    <h1><i class="fas fa-clock"></i> Tienda de Relojes Xander</h1>
+  </header>
+  <nav>
+    <a href="index.html#relojes">Tipos de relojes</a>
+    <a href="index.html#marcas-populares">Marcas populares</a>
+    <a href="index.html#servicios">Servicios</a>
+    <a href="index.html#contacto">Contacto</a>
+  </nav>
+
+<main id="producto" class="contenedor-principal">
+    <section class="detalle-reloj">
+        
+        <img id="imagen" alt="Imagen del reloj" width="250">
+        
+        <div class="info-reloj-detalle">
+            
+            <div class="etiquetas-superiores">
+                 <span class="etiqueta">Nuevo</span>
+                 <span class="etiqueta">Deportivo</span>
+            </div>
+            
+            <h1 id="nombre"></h1>
+
+      <p><strong>Precio:</strong> <span id="precio"></span></p>
+      <p><strong>Descripción:</strong> <span id="descripcion"></span></p>
+      <p><strong>Material de la caja:</strong> <span id="material"></span></p>
+      <p><strong>Marca:</strong> <span id="marca"></span></p>
+      <p><strong>Modelo:</strong> <span id="modelo"></span></p>
+      <p><strong>Categoría:</strong> <span id="categoria"></span></p>
+      <p><strong>Disponibilidad:</strong> <span id="stock"></span></p>
+    </section>
+  </main>
+
+    <div id="panelCarrito" style="display:none;
+    position:fixed; 
+    top:20px; 
+    right:20px; 
+    background:white; 
+    padding:15px; 
+    border:1px solid #ccc; 
+    box-shadow:0 0 10px rgba(0,0,0,0.2)">
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="app.js"></script>
+  <footer>
+    <div class="footer-container">
+      <p>© 2025 Tienda de Relojes Elegance. Todos los derechos reservados.</p>
+      <div class="social-links">
+        <a href="https://www.facebook.com/tuusuario" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/tuusuario" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/918164193" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+  </footer>
+
+  <script>
+    function cerrarSesion() {
+      localStorage.removeItem("sesionIniciada");
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+
+</html>

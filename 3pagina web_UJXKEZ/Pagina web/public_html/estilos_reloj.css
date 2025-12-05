@@ -1,0 +1,99 @@
+/* 1. Estilos Globales para Limpieza y Elegancia */
+body {
+    font-family: 'Arial', sans-serif; /* Fuente simple y moderna */
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8; /* Fondo muy claro para el contraste */
+}
+
+/* 2. Contenedor Principal (Layout de dos columnas) */
+.product-detail {
+    max-width: 1200px;
+    margin: 40px auto; /* Espacio en blanco alrededor */
+    padding: 20px;
+    background-color: #ffffff; 
+    display: flex; 
+    gap: 50px; 
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05); /* Sombra sutil */
+}
+
+/* 3. Columna de Imágenes */
+.image-gallery {
+    flex: 1; 
+    max-width: 50%;
+}
+
+.image-gallery img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain; 
+}
+
+/* 4. Columna de Información */
+.info-box {
+    flex: 1; 
+    max-width: 50%;
+    padding-top: 20px;
+}
+
+.product-name {
+    font-size: 2.5em;
+    margin-bottom: 5px;
+    font-weight: 300; 
+}
+
+.product-price {
+    font-size: 1.8em;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.product-description {
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* 5. Botón de Compra (Acción Clara) */
+.add-to-cart-btn {
+    background-color: #000; 
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #333;
+}
+
+/* 6. Especificaciones */
+.info-box h3 {
+    margin-top: 30px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.info-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.info-box li {
+    padding: 5px 0;
+    font-size: 0.95em;
+}
+
+/* Adaptación simple para móviles */
+@media (max-width: 768px) {
+    .product-detail {
+        flex-direction: column; /* Apila las columnas verticalmente */
+    }
+    .image-gallery, .info-box {
+        max-width: 100%;
+    }
+}
